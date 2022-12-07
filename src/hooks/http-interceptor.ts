@@ -1,4 +1,3 @@
-import * as Api from 'nest-starter/lib';
 import axios, { AxiosInstance } from 'axios';
 import { environment } from '../config/environment';
 import Cookies from 'js-cookie';
@@ -20,8 +19,6 @@ async function refreshToken() {
 };
 
 httpClient.interceptors.request.use(config => {
-    console.log('echo 1');
-
     const accessToken = localStorage.getItem(environment.accessToken);
     config.headers!.Authorization = `Bearer ${accessToken}`;
     return config;
@@ -33,10 +30,8 @@ httpClient.interceptors.request.use(config => {
 httpClient.interceptors.response.use(response => {
     return response;
 }, error => {
-    console.log('echo 2');
-
     const originalRequest = error.config;
-    if (error.response.status === 403 && !originalRequest._retry) {
+    if (error.response.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
         return refreshToken().then(() => {
             return httpClient(originalRequest);
