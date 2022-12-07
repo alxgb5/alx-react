@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
-import { environment } from '../config/environment';
+import { environment } from './environment';
 import Cookies from 'js-cookie';
-import { getDataFromAPI } from '../config/api.conf';
+import { getDataFromAPI } from './api.conf';
 import { AuthApi, AuthApiAuthControllerRefreshRequest, LoginResponse } from 'nest-starter/lib';
 
 export const httpClient: AxiosInstance = axios.create({

@@ -4,24 +4,10 @@ import Cookies from 'js-cookie';
 import jwtDecode from "jwt-decode";
 import { environment } from '../config/environment';
 import { getDataFromAPI } from '../config/api.conf';
+import { JwtPayload } from '../types/payload';
 
-export interface JwtPayload {
-    username: string;
-    id: string;
-    roles: string[];
-    mail: string;
-    firstname: string;
-    lastname?: string;
-    imgUrl?: string;
-    disabled: boolean;
-    iat?: string;
-    exp?: string;
-}
-
-export interface JwtPayloadWithRt extends JwtPayload {
-    refreshToken: string;
-}
 const UserContext = React.createContext({} as UserDto);
+
 export function useAuth() {
     const [currentUser, setCurrentUser] = useState<UserDto | null>({} as UserDto);
     let contextUser = useContext(UserContext);
@@ -94,4 +80,22 @@ function getDecodedAccessToken(token: string): JwtPayload {
     catch (err) {
         return {} as JwtPayload;
     }
+}
+
+const AdminContext = React.createContext(false);
+
+export function AdminProvider({ children }: any) {
+    const { currentUser } = useAuth();
+    const [isAdmin, setIsAdmin] = useState<boolean>(false);
+    useEffect(() => {
+        if (!currentUser?.rolesString?.find(x => x === 'admin')) {
+            setIsAdmin(false);
+        } else setIsAdmin(true);
+    }, [currentUser]);
+
+    return (
+        <AdminContext.Provider value={isAdmin}>
+            {children}
+        </AdminContext.Provider>
+    );
 }

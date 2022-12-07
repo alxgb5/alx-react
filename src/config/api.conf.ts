@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { httpClient } from '../hooks/http-interceptor';
+import { httpClient } from './http-interceptor';
 import { environment } from './environment';
 
 export function getDataFromAPI<T, R>(apiClass: new (...args: any[]) => T, methodName: keyof T, ...args: any[]): AxiosResponse<R> {
