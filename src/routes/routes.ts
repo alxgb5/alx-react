@@ -1,59 +1,76 @@
+import { FaHome, FaSignInAlt, FaSignOutAlt, FaUserCircle, FaUsers } from 'react-icons/fa';
+import { IconType } from 'react-icons/lib';
+import { MdAdminPanelSettings, MdPassword, MdSettings, MdVerified } from 'react-icons/md';
+
 export const RoutesList = {
     // Public
     Home: '/',
-    Login: 'login',
-    Register: 'register',
-    ActivateAccount: 'confirm-account',
-    ResetPassword: 'reset-password',
-    Maintenance: 'maintenance',
-    Profile: 'profile',
+    Maintenance: '/maintenance',
+
+    Login: '/auth/login',
+    Register: '/auth/register',
+    ActivateAccount: '/auth/confirm-account',
+    ResetPassword: '/auth/reset-password',
+
+    // auth
+    Profile: '/profile',
 
     // Admin
-    AdminHome: 'admin/home',
-    AdminUsers: 'admin/users',
-    AdminSettings: 'admin/settings',
+    AdminHome: '/admin/home',
+    AdminUsers: '/admin/users',
+    AdminSettings: '/admin/settings',
 };
 
-export const RoutesListWrapper = [
+export const RoutesListWrapper: { label: string, key: string, icon: IconType, }[] = [
     {
         key: RoutesList.Home,
-        label: "Accueil"
+        label: "Accueil",
+        icon: FaHome,
     },
     {
         key: RoutesList.Login,
-        label: "Connexion"
+        label: "Connexion",
+        icon: FaSignInAlt,
     },
     {
         key: RoutesList.Register,
-        label: "Inscription"
+        label: "Inscription",
+        icon: FaSignOutAlt,
     },
     {
         key: RoutesList.ResetPassword,
-        label: "Mot de passe oublié"
+        label: "Mot de passe oublié",
+        icon: MdPassword,
     },
     {
         key: RoutesList.ActivateAccount,
-        label: "Activation du compte"
+        label: "Activation du compte",
+        icon: MdVerified,
     },
     {
         key: RoutesList.Maintenance,
-        label: "Maintenance"
+        label: "Maintenance",
+        icon: FaHome,
     },
     {
         key: RoutesList.Profile,
-        label: "Profil"
+        label: "Profil",
+        icon: FaUserCircle,
     },
     // Admin
     {
         key: RoutesList.AdminHome,
-        label: "Accueil"
+        label: "Administration",
+        icon: MdAdminPanelSettings,
     },
     {
         key: RoutesList.AdminUsers,
-        label: "Utilisateurs"
+        label: "Utilisateurs",
+        icon: FaUsers,
     },
     {
         key: RoutesList.AdminSettings,
-        label: "Paramètres"
+        label: "Paramètres",
+        icon: MdSettings,
     }
 ];
