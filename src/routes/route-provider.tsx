@@ -25,7 +25,6 @@ export function RoutesProvider({ children }: any) {
     const baseRoutesList = RoutesListWrapper.filter((x) => x.key !== RoutesList.Maintenance);
 
     useEffect(() => {
-        console.log("2");
         setCurrentRoute(location.pathname as keyof typeof RoutesList);
     }, [location]);
 
@@ -44,7 +43,7 @@ export function RoutesProvider({ children }: any) {
 
     function getPublicRoute(): { label: string; key: string; icon: IconType; }[] {
         if (currentUser?.id)
-            return baseRoutesList.filter((x) => { return !x.key.includes('admin'); });
+            return baseRoutesList.filter((x) => { return !x.key.includes('admin') || x.key === RoutesList.AdminHome; }).filter((x) => { return !x.key.includes('auth'); });
         else {
             const publicRoutes = baseRoutesList.filter((x) => { return !x.key.includes('auth') || x.key === RoutesList.Login; });
             return publicRoutes.filter((x) => { return !x.key.includes('admin'); }).filter((x) => x.key !== RoutesList.Profile);

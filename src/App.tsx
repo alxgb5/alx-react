@@ -33,6 +33,7 @@ function App() {
               <Route path={RoutesList.AdminHome} element={<AdminGuard><AdminHome /></AdminGuard>} />
               <Route path={RoutesList.AdminUsers} element={<AdminGuard><Users /></AdminGuard>} />
               <Route path={RoutesList.AdminUsers + '/:id'} element={<AdminGuard><UserEdit /></AdminGuard>} />
+
               <Route path={'*'} element={<Navigate replace to={RoutesList.Home} />} />
             </Routes >
           </Layout>

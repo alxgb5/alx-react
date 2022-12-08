@@ -4,15 +4,15 @@ import { RoutesList } from '../routes/routes';
 import { useAuth } from './auth-provider';
 
 
-export function AdminGuard({ children }: any) {
+export function AdminGuard(children: any) /*I use any because i didn't find the good type */ {
     const { currentUser } = useAuth();
-    const [isAdmin, setIsAdmin] = useState<boolean>(false);
+    const [check, setCheck] = useState<boolean>(false);
+
     useEffect(() => {
-        if (!currentUser?.rolesString?.find(x => x === 'admin')) {
-            setIsAdmin(false);
-        } else setIsAdmin(true);
-    }, [currentUser]);
+        if (currentUser?.rolesString?.find((x) => x === 'admin')) {
+            setCheck(true);
+        }
+    }, [currentUser, check]);
 
-    return isAdmin ? children : <Navigate to={RoutesList.Home} replace />;
-
+    return check ? children : React.createElement(Navigate, { to: RoutesList.Home, replace: true });
 }

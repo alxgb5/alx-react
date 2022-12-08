@@ -16,7 +16,7 @@ export const RoutesList = {
     Profile: '/profile',
 
     // Admin
-    AdminHome: '/admin/home',
+    AdminHome: 'admin/home',
     AdminUsers: '/admin/users',
     AdminSettings: '/admin/settings',
 };

@@ -1,45 +1,10 @@
-.auth-container {
-    background-color: grey;
-    height: 100vh;
-    width: 100%;
-    padding: 20px;
+.layout-public .content {
+    padding: 0 !important;
+}
 
-    .card-container {
-        height: 50vh;
-        background-color: white;
-        width: 40%;
-        border-radius: 40px;
-        padding: 40px 100px;
-    }
-
-    h1.page-title {
-        font-size: 24px;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .form-container {
-        gap: 20px;
-    }
-
-    button.auth-btn {
-        padding: 10px 40px;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        background-color: rgb(134, 134, 243);
-        cursor: pointer;
-    }
-
-    p.error {
-        color: red;
-        font-size: 12px;
-        display: block;
-
-        &-none {
-            display: none;
-            font-size: 12px;
-        }
-    }
+p.error {
+    color: #fa5252;
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
 }
