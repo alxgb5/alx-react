@@ -12,25 +12,31 @@ import ResetPassword from './pages/auth/ResetPassword';
 import Home from './pages/public/Home';
 import { RoutesList } from './routes/routes';
 import { NoLoggedGuard } from './hooks/no-logged-guard';
+import Layout from './components/layout/Layout';
+import { RoutesProvider } from './routes/route-provider';
 
 function App() {
 
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Routes>
-          {/* public */}
-          <Route path={RoutesList.Home} element={<Home />} />
-          {/* authentification */}
-          <Route path={RoutesList.Login} element={<NoLoggedGuard><Login /></NoLoggedGuard>} />
-          <Route path={RoutesList.Register} element={<NoLoggedGuard><Register /></NoLoggedGuard>} />
-          <Route path={RoutesList.ResetPassword} element={<NoLoggedGuard><ResetPassword /></NoLoggedGuard>} />
-          {/* admin */}
-          <Route path={RoutesList.AdminHome} element={<AdminGuard><AdminHome /></AdminGuard>} />
-          <Route path={RoutesList.AdminUsers} element={<AdminGuard><Users /></AdminGuard>} />
-          <Route path={RoutesList.AdminUsers + '/:id'} element={<AdminGuard><UserEdit /></AdminGuard>} />
-          <Route path={'*'} element={<Navigate replace to={RoutesList.Home} />} />
-        </Routes >
+        <RoutesProvider>
+          <Layout>
+            <Routes>
+              {/* public */}
+              <Route path={RoutesList.Home} element={<Home />} />
+              {/* authentification */}
+              <Route path={RoutesList.Login} element={<NoLoggedGuard><Login /></NoLoggedGuard>} />
+              <Route path={RoutesList.Register} element={<NoLoggedGuard><Register /></NoLoggedGuard>} />
+              <Route path={RoutesList.ResetPassword} element={<NoLoggedGuard><ResetPassword /></NoLoggedGuard>} />
+              {/* admin */}
+              <Route path={RoutesList.AdminHome} element={<AdminGuard><AdminHome /></AdminGuard>} />
+              <Route path={RoutesList.AdminUsers} element={<AdminGuard><Users /></AdminGuard>} />
+              <Route path={RoutesList.AdminUsers + '/:id'} element={<AdminGuard><UserEdit /></AdminGuard>} />
+              <Route path={'*'} element={<Navigate replace to={RoutesList.Home} />} />
+            </Routes >
+          </Layout>
+        </RoutesProvider>
       </BrowserRouter>
     </AuthProvider>
   );
