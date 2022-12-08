@@ -1,0 +1,40 @@
+.layout-admin {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .menu {
+        nav {
+            height: 100vh;
+        }
+    }
+
+    .content {
+        width: 85%;
+        height: 100vh;
+        padding: 40px;
+        background-color: rgb(255, 255, 255);
+        overflow: auto;
+    }
+}
+
+$navHeight : 50px;
+
+.layout-public {
+    display: flex;
+    flex-direction: column;
+
+    .menu {
+        height: $navHeight;
+
+        nav {}
+    }
+
+    .content {
+        width: 100%;
+        height: calc(100vh - $navHeight);
+        padding: 30px 100px;
+        background-color: #f6f6f6;
+        overflow: auto;
+    }
+}
