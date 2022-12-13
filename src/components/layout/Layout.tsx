@@ -8,6 +8,7 @@ import { Nav } from './PublicNav';
 
 interface props {
     children: React.ReactNode;
+    authLayout?: boolean;
 }
 
 const Layout = ({ children }: props) => {
@@ -19,7 +20,7 @@ const Layout = ({ children }: props) => {
                 currentRoute.includes('admin')
                     ? <AdminLayout>{children}</AdminLayout>
                     :
-                    <PublicLayout>{children}</PublicLayout>
+                    <PublicLayout authLayout={currentRoute.includes('auth') ? true : false}>{children}</PublicLayout>
             }
         </>
     );
@@ -40,13 +41,13 @@ const AdminLayout = ({ children }: props) => {
     );
 };
 
-const PublicLayout = ({ children }: props) => {
+const PublicLayout = ({ children, authLayout }: props) => {
     return (
         <div className='layout-public'>
             <div className='menu'>
                 <Nav />
             </div>
-            <div className='content'>
+            <div className={'content ' + (authLayout ? 'auth' : '')}>
                 {children}
             </div>
         </div>
