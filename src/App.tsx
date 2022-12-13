@@ -1,11 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.scss';
-import { AdminGuard } from './hooks/admin-guard';
 import { AuthProvider } from './hooks/auth-provider';
 import AdminHome from './pages/admin/AdminHome';
-import UserEdit from './pages/admin/UserEdit';
-import Users from './pages/admin/Users';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import ResetPassword from './pages/auth/ResetPassword';
@@ -14,9 +11,11 @@ import { RoutesList } from './routes/routes';
 import { NoLoggedGuard } from './hooks/no-logged-guard';
 import Layout from './components/layout/Layout';
 import { RoutesProvider } from './routes/route-provider';
+import { AdminGuard } from './hooks/admin-guard';
+import Users from './pages/admin/Users';
+import UserEdit from './pages/admin/UserEdit';
 
 function App() {
-
   return (
     <AuthProvider>
       <BrowserRouter>
