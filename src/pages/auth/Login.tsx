@@ -17,11 +17,10 @@ import { useAuth } from '../../hooks/auth-provider';
 import { RoutesList } from '../../routes/routes';
 
 const useStyles = createStyles((theme) => ({
+
     wrapper: {
         height: '100%',
         backgroundSize: 'cover',
-        backgroundImage:
-            'url(https://images.unsplash.com/photo-1484242857719-4b9144542727?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&q=80)',
     },
 
     form: {
@@ -116,7 +115,7 @@ export const Login = () => {
                 </form>
                 <Text align="center" mt="md">
                     Pas encore de compte ?
-                    <Anchor<'a'> href="#" weight={700} onClick={(event) => event.preventDefault()}>
+                    <Anchor<'a'> href="#" weight={700} onClick={(event) => navigate(RoutesList.Register)}>
                         Inscrivez-vous
                     </Anchor>
                 </Text>

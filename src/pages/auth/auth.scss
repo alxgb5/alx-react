@@ -4,3 +4,23 @@ p.error {
     margin-top: 10px;
     text-align: center;
 }
+
+@keyframes backgroundChangeColor {
+    0% {
+        background-color: #FFF;
+    }
+
+
+    50% {
+        background-color: #238be6;
+    }
+
+
+    100% {
+        background-color: #FFF;
+    }
+}
+
+div.mantine-d3zxqq {
+    animation: backgroundChangeColor 20s ease-in-out infinite;
+}
